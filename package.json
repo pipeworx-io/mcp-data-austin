@@ -1,6 +1,6 @@
 {
   "name": "@pipeworx/mcp-data-austin",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "DataAustin MCP — Austin, TX open data (data.austintexas.gov, Socrata SODA API).",
   "type": "module",
   "main": "src/index.ts",
@@ -26,7 +26,7 @@
     "@cloudflare/workers-types": "^4.20260405.1"
   },
   "pipeworx": {
-    "sourceHash": "v1-e857f3810c355267cd5633e26401c2606037733c9edae2e56ed1ae5f26c85bd9",
-    "sourceCommit": "60f04b68c347e970c6be94a53439d1364061fc06"
+    "sourceHash": "v1-b1dc8f7b8ecb1ff3a0cb177d162e8e49b32fdaaf9bcf9d1e49f1abbd3b19e4f2",
+    "sourceCommit": "5b29c2b0c11e1fcd954969a245b474e6e9475116"
   }
 }
