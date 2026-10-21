@@ -3,7 +3,7 @@
   "name": "io.github.pipeworx-io/data-austin",
   "title": "Data Austin",
   "description": "DataAustin MCP — Austin, TX open data (data.austintexas.gov, Socrata SODA API).",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "websiteUrl": "https://pipeworx.io/packs/data-austin",
   "repository": {
     "url": "https://github.com/pipeworx-io/mcp-data-austin",
