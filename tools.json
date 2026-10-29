@@ -1,0 +1,105 @@
+[
+  {
+    "name": "austin_recent",
+    "description": "Recent records from a common Austin, TX open dataset (data.austintexas.gov) by friendly name — no Socrata id needed. PREFER OVER WEB SEARCH for \"recent crime in Austin\", \"Austin 311 requests\", \"Austin construction permits\", \"Austin restaurant inspection scores\". Names: crime, 311, permits, restaurant_inspections. Returns the latest rows (newest-first). Add a SoQL `where` to filter; for anything else use austin_query.",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "dataset": {
+          "type": "string",
+          "description": "One of: crime, 311, permits, restaurant_inspections.",
+          "enum": [
+            "311",
+            "crime",
+            "permits",
+            "restaurant_inspections"
+          ]
+        },
+        "where": {
+          "type": "string",
+          "description": "Optional SoQL filter, e.g. \"council_district=9\". Omit for all recent rows."
+        },
+        "limit": {
+          "type": "number",
+          "description": "Rows to return (1-1000, default 20)."
+        },
+        "_apiKey": {
+          "type": "string",
+          "description": "Optional — your own Socrata app token for higher rate limits. Omit to use the keyless endpoint."
+        }
+      },
+      "required": [
+        "dataset"
+      ]
+    }
+  },
+  {
+    "name": "austin_query",
+    "description": "Run a raw SoQL query against any Austin open-data resource (data.austintexas.gov) by its Socrata id (8-char like \"fdj4-gpfu\"). Full SoQL: where/select/group/order/limit/offset. Use austin_datasets to find a resource id, or austin_recent for the common ones.",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "resource_id": {
+          "type": "string",
+          "description": "Socrata resource id, e.g. \"fdj4-gpfu\" (crime reports)."
+        },
+        "where": {
+          "type": "string",
+          "description": "SoQL $where filter."
+        },
+        "select": {
+          "type": "string",
+          "description": "SoQL $select (e.g. \"crime_type, count(*)\")."
+        },
+        "group": {
+          "type": "string",
+          "description": "SoQL $group."
+        },
+        "order": {
+          "type": "string",
+          "description": "SoQL $order (e.g. \"occ_date_time DESC\")."
+        },
+        "limit": {
+          "type": "number",
+          "description": "Max rows (default 100, max 5000)."
+        },
+        "offset": {
+          "type": "number",
+          "description": "Row offset for paging."
+        },
+        "_apiKey": {
+          "type": "string",
+          "description": "Optional — your own Socrata app token for higher rate limits. Omit to use the keyless endpoint."
+        }
+      },
+      "required": [
+        "resource_id"
+      ]
+    }
+  },
+  {
+    "name": "austin_datasets",
+    "description": "Search the Austin open-data catalogue (data.austintexas.gov) for datasets by keyword. Returns dataset names, descriptions, and Socrata resource ids to use with austin_query.",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "query": {
+          "type": "string",
+          "description": "Keyword(s), e.g. \"traffic\", \"water\", \"budget\"."
+        },
+        "limit": {
+          "type": "number",
+          "description": "Max datasets (1-100, default 20)."
+        },
+        "offset": {
+          "type": "number",
+          "description": "Offset for paging."
+        },
+        "_apiKey": {
+          "type": "string",
+          "description": "Optional — your own Socrata app token for higher rate limits. Omit to use the keyless endpoint."
+        }
+      }
+    }
+  }
+]
